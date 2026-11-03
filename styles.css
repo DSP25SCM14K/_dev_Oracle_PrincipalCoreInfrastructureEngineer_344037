@@ -54,3 +54,11 @@ body{background-color:#080f17;background-image:linear-gradient(180deg,rgba(5,12,
 body{background-image:linear-gradient(180deg,rgba(5,11,19,.62),rgba(5,11,19,.84)),url("ai-infrastructure-hero.jpg")}
 .hero::before{display:block;inset:0;z-index:0;opacity:.94;background-image:linear-gradient(90deg,rgba(5,11,18,.12),rgba(5,11,18,.07) 48%,rgba(5,11,18,.15)),url("ai-infrastructure-hero.jpg");background-size:cover;background-position:center 41%;mask-image:none}
 .hero-art{background:linear-gradient(145deg,rgba(8,16,24,.18),rgba(10,16,24,.10))}
+
+/* Explicit image layer keeps the generated GPU/data-center visual visible in all renderers. */
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;z-index:0;opacity:.88;pointer-events:none;animation:photoDrift 34s ease-in-out infinite alternate}
+.hero::before{display:none!important}
+.hero-copy,.hero-art,.hero-index{position:relative;z-index:1}
+.hero-art{background:linear-gradient(145deg,rgba(8,16,24,.12),rgba(10,16,24,.08))}
+@keyframes photoDrift{from{transform:scale(1)}to{transform:scale(1.07) translateX(-.7%)}}
+@media(prefers-reduced-motion:reduce){.hero-photo{animation:none}}
